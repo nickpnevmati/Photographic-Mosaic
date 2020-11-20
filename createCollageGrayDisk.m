@@ -2,6 +2,8 @@ function [collage] = createCollageGrayDisk(targetImg, imgDir, pixelSize)
 
 targetImg = rgb2gray(targetImg);
 
+addpath('helperFunctions');
+
 if(~isfile('index.mat'))
     fprintf('File not found, creating new image pallete...\n');
     imagePallete = create_image_pallete(imgDir);
@@ -20,10 +22,11 @@ targetY = size(targetImg, 2);
 collage = zeros(targetX * pixelSize - 1, targetY * pixelSize - 1);
 imageValArray = table2array(imagePallete(:, 2));
 
+counter = 1;
 for i = 1 : targetX
     for j = 1 : targetY
-        fprintf(append(['Appending image: ', num2str((i - 1) * targetX + j), '/', num2str(targetX * targetY), '\n']));
-        
+        fprintf(append(['Appending image: ', num2str(counter), '/', num2str(targetX * targetY), '\n']));
+        counter = counter + 1;
         pixelVal = targetImg(i, j);
         
         palletIndex = findClosestValueIndex(imageValArray, pixelVal);
