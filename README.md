@@ -1,2 +1,2 @@
-# AutoCollage
-MATLAB code that takes a set of images and reconstructs an image using the dataset as the new "pixels"
+# Photographic Mosaic
+Reconstructs a target image using a given dataset of images by using them as "pixels"
